@@ -107,6 +107,7 @@ cicd_build() {
 	echo "Building Software"
 	docker build --pull=true \
              --label "org.opencontainers.image.vendor=cronocide.net" \
+             --label "org.opencontainers.image.authors=github@cronocide.com" \
              --label "org.opencontainers.image.title=${PROJECT_NAME}" \
              --label "org.opencontainers.image.url=https://${GIT_REPO_NAME}" \
              --label "org.opencontainers.image.source=https://${IMAGE_NAME}" \
@@ -173,7 +174,7 @@ __no_req "$ACTION" && error "Action $ACTION is not recognized as a valid action.
 
 # Fill in variables if not supplied by CICD
 [ -z "$USERN" ] && export USERN=cronocide
-[ -z "$GIT_REPO_NAME" ] && export GIT_REPO_NAME=git.cronocide.net
+[ -z "$GIT_REPO_NAME" ] && export GIT_REPO_NAME=ghcr.io
 
 
 # Define needed build strings

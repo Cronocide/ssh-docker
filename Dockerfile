@@ -1,11 +1,11 @@
-FROM ubuntu
-ENV PROJ_NAME=python-tool
+FROM alpine
+ENV PROJ_NAME=ssh-docker
 
-# Install Python
-FROM python:3.10.6 as PYTHON
-
-# Copy project files
 ADD ./ /$PROJ_NAME
+RUN apk update && apk add --no-cache \
+	openssh-client \
+	autossh \
+	sshpass
 
 # Run entrypoint
-ENTRYPOINT [""]
+CMD ["/usr/bin/ssh"]
