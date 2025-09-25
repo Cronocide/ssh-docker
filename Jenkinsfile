@@ -18,6 +18,7 @@ pipeline {
 		WORKSPACE_PATH = "/opt/nomad/alloc/${NOMAD_ALLOC_ID}/${NOMAD_TASK_NAME}${WORKSPACE}"
 		DESCRIPTION = "A smol container for SSH client operations."
 	}
+        triggers { cron('H 3 * * 1') }
 	stages {
 		stage('Prepare') {
 			when { expression { params.PREPARE } }
